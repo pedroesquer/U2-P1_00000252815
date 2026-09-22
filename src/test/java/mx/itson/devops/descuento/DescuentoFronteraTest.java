@@ -1,6 +1,7 @@
 package mx.itson.devops.descuento;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -34,5 +35,10 @@ class DescuentoFronteraTest {
         // preparar / ejecutar / comparar
         int obtenido = descuento.porcentaje(101);
         assertEquals(10, obtenido);
+    }
+
+    @Test
+    void unidadesNegativasLanzanExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> descuento.porcentaje(-1));
     }
 }
